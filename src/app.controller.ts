@@ -1,4 +1,4 @@
-import { Controller, Get, Body, Param, Post, Put } from '@nestjs/common';
+import { Controller, Get, Body, Param, Post, Put, Delete } from '@nestjs/common';
 // import { UseGuards } from '@nestjs/common';
 // import { AuthGuard } from '@nestjs/passport';
 import { AppService } from './app.service';
@@ -16,7 +16,7 @@ export class AppController {
   @Get('get-coins')
   async getCoins(): Promise <any> {
     const result = await this.appService.getCoinsList()
-    console.log(result)
+    
     return result
   }
 
@@ -36,6 +36,12 @@ export class AppController {
   @Get('get-watchlist/:id')
   async getWatchlist(@Param('id') id:string) {
     const res = await this.appService.getWatchListById(id)
+    return res
+  }
+
+  @Delete('delete-item/:id')
+  async deleteItem(@Param('id') id:string) {
+    const res = this.appService.deleteItemById(id)
     return res
   }
 

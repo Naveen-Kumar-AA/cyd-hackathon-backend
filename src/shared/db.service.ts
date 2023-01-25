@@ -50,4 +50,13 @@ export class DbService {
     const res = reqWList.update({ tokens: updatedTokens }).save();
     return res;
   }
+
+  async delete(key:string) {
+    const reqWList = this.WatchLists.find((obj: any) => {
+      obj.name === key;
+    });
+    const res = reqWList.delete({ id: reqWList.id })
+    return res
+  }
+
 }
