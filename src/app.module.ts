@@ -2,9 +2,12 @@ import { SharedModule } from './shared';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+// import { AuthModule } from 'auth/auth.module';
+import { HttpModule } from '@nestjs/axios';
+
 
 @Module({
-  imports: [SharedModule],
+  imports: [SharedModule,HttpModule],
   controllers: [AppController],
   providers: [AppService],
 })
