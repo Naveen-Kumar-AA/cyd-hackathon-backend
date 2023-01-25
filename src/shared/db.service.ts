@@ -26,6 +26,13 @@ export class DbService {
     return reqWList;
   }
 
+  async findById(key: string) {
+    const reqWList = this.WatchLists.find((obj: any) => {
+      obj._id === key;
+    });
+    return reqWList;
+  }
+
   async create(name: string, data: Array<string>) {
     const res = this.WatchLists.create({
       _id: uuid(),

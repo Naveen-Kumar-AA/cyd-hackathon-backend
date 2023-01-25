@@ -17,7 +17,7 @@ export class AppController {
   async getCoins(): Promise <any> {
     const result = await this.appService.getCoinsList()
     console.log(result)
-    return "success!"
+    return result
   }
 
   @Post('create-watchlist')
@@ -29,6 +29,13 @@ export class AppController {
   @Put('add-tokens/:name')
   async addTokens(@Body() body:any, @Param('name') name:string) {
     const res = await this.appService.updateTokens(name,body.data)
+    return res
+  }
+
+
+  @Get('get-watchlist/:id')
+  async getWatchlist(@Param('id') id:string) {
+    const res = await this.appService.getWatchListById(id)
     return res
   }
 
