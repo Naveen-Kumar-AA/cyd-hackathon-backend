@@ -15,4 +15,15 @@ export class AppService {
     console.log(result.subscribe(value => console.log(value)))
     return result
   }
+
+  async createWatchListItem(name:string, data: Array<string> ) {
+    const res = await this.db.create(name,data)
+    return res
+  }
+
+  async updateTokens(key: string, data: Array<string>) {
+    const res = await this.db.update(key,data)
+    return res
+  }
+
 }
